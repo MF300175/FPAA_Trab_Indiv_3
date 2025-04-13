@@ -25,15 +25,15 @@ def check_pip():
 def check_dependencies():
     print("\nVerificando dependências...")
     required = {
-        'networkx': '3.1',
-        'matplotlib': '3.7.1',
-        'numpy': '1.24.3'
+        'networkx': '>=3.1',
+        'matplotlib': '>=3.7.1',
+        'numpy': '>=2.1.0'
     }
     
     all_ok = True
     for package, version in required.items():
         try:
-            pkg_resources.require(f"{package}=={version}")
+            pkg_resources.require(f"{package}{version}")
             print(f"✅ {package} {version} - OK")
         except pkg_resources.VersionConflict as e:
             print(f"❌ {package}: versão incorreta - {e}")
