@@ -2,7 +2,82 @@
 
 ## 📝 Descrição do Projeto
 
-Este projeto implementa e analisa a complexidade do algoritmo de caminho hamiltoniano em grafos.
+Este projeto implementa e analisa a complexidade do algoritmo de caminho hamiltoniano em grafos. Um caminho hamiltoniano é um caminho em um grafo que visita cada vértice exatamente uma vez. A implementação utiliza uma abordagem de backtracking para encontrar o caminho hamiltoniano.
+
+### 🔍 Implementação do Algoritmo
+
+O algoritmo implementado segue os seguintes passos:
+1. Inicialização: Cria-se um grafo com n vértices
+2. Backtracking: Para cada vértice não visitado:
+   - Marca o vértice como visitado
+   - Adiciona o vértice ao caminho atual
+   - Recursivamente tenta encontrar um caminho a partir deste vértice
+   - Se um caminho completo é encontrado, retorna verdadeiro
+   - Se não encontra caminho, desfaz a escolha e tenta o próximo vértice
+3. Verificação: Se todos os vértices foram visitados, um caminho hamiltoniano foi encontrado
+
+## 📊 Análise Técnica
+
+### Classes de Complexidade
+
+O problema do Caminho Hamiltoniano pertence à classe NP-Completo. Isso pode ser justificado pelos seguintes pontos:
+
+1. **Pertence a NP**: 
+   - Uma solução pode ser verificada em tempo polinomial
+   - Dado um caminho, podemos verificar em O(n) se ele visita cada vértice exatamente uma vez
+
+2. **NP-Completo**:
+   - O problema pode ser reduzido ao Problema do Caixeiro Viajante (TSP)
+   - TSP é NP-Completo, e o Caminho Hamiltoniano é uma versão mais simples do TSP
+   - A redução é direta: um caminho hamiltoniano existe se e somente se existe um ciclo hamiltoniano
+
+3. **Não é P**:
+   - Não existe algoritmo conhecido que resolva o problema em tempo polinomial
+   - A natureza do problema requer verificação de todas as possíveis permutações de vértices
+
+### Análise da Complexidade Assintótica
+
+#### Complexidade Temporal
+- **Pior Caso**: O(n!)
+  - O algoritmo precisa verificar todas as possíveis permutações de vértices
+  - Para n vértices, existem n! possíveis caminhos
+  - Cada verificação de caminho requer O(n) operações
+
+- **Caso Médio**: O(n!)
+  - Mesmo no caso médio, o algoritmo precisa verificar uma fração significativa das permutações
+  - A natureza do problema não permite melhorias significativas no caso médio
+
+- **Melhor Caso**: O(n)
+  - Ocorre quando o primeiro caminho tentado é hamiltoniano
+  - Raramente acontece na prática
+
+#### Método de Análise
+A complexidade foi determinada através da contagem de operações:
+1. Para cada vértice inicial (n escolhas)
+2. Para cada vértice não visitado (n-1 escolhas)
+3. Para cada vértice restante (n-2 escolhas)
+4. E assim por diante até n! possibilidades
+
+### Aplicação do Teorema Mestre
+
+O Teorema Mestre não é aplicável neste caso porque:
+1. O algoritmo não segue o padrão de divisão e conquista
+2. Não há subproblemas de tamanho n/b
+3. A recorrência não segue a forma T(n) = aT(n/b) + f(n)
+
+### Impacto dos Casos de Complexidade
+
+1. **Pior Caso (O(n!))**:
+   - O algoritmo se torna impraticável para grafos com mais de 20 vértices
+   - O tempo de execução cresce fatorialmente com o tamanho do grafo
+
+2. **Caso Médio (O(n!))**:
+   - Similar ao pior caso devido à natureza do problema
+   - Pequenas otimizações podem reduzir o tempo de execução, mas não alteram a complexidade assintótica
+
+3. **Melhor Caso (O(n))**:
+   - Teoricamente possível, mas extremamente raro
+   - Não representa o comportamento típico do algoritmo
 
 ## ✨ Funcionalidades
 

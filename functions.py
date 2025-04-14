@@ -1,12 +1,14 @@
 class Graph:
-    def __init__(self, vertices):
+    def __init__(self, vertices, directed=False):
         """
         Inicializa um grafo com o número especificado de vértices.
         
         Args:
             vertices (int): Número de vértices no grafo
+            directed (bool): Se True, o grafo é direcionado. Se False, é não direcionado
         """
         self.V = vertices
+        self.directed = directed
         self.graph = [[0 for _ in range(vertices)] for _ in range(vertices)]
     
     def add_edge(self, u, v):
@@ -18,7 +20,8 @@ class Graph:
             v (int): Vértice de destino
         """
         self.graph[u][v] = 1
-        self.graph[v][u] = 1  # Para grafos não direcionados
+        if not self.directed:  # Para grafos não direcionados
+            self.graph[v][u] = 1
     
     def is_safe(self, v, pos, path):
         """

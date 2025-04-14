@@ -90,17 +90,30 @@ def plot_complexity(sizes, times, title):
     print(f"Gráfico salvo como 'complexity_analysis.png'")
 
 def main():
-    # Teste básico do algoritmo
+    # Teste básico do algoritmo de Caminho Hamiltoniano
     print("Teste básico do algoritmo de Caminho Hamiltoniano:")
-    g = Graph(5)
-    g.add_edge(0, 1)
-    g.add_edge(0, 3)
-    g.add_edge(1, 2)
-    g.add_edge(1, 3)
-    g.add_edge(1, 4)
-    g.add_edge(2, 4)
-    g.add_edge(3, 4)
-    g.hamiltonian_path()
+    
+    # Teste com grafo não direcionado
+    print("\n1. Teste com grafo não direcionado:")
+    g1 = Graph(5, directed=False)
+    g1.add_edge(0, 1)
+    g1.add_edge(0, 3)
+    g1.add_edge(1, 2)
+    g1.add_edge(1, 3)
+    g1.add_edge(1, 4)
+    g1.add_edge(2, 4)
+    g1.add_edge(3, 4)
+    g1.hamiltonian_path()
+    
+    # Teste com grafo direcionado
+    print("\n2. Teste com grafo direcionado:")
+    g2 = Graph(5, directed=True)
+    g2.add_edge(0, 1)
+    g2.add_edge(1, 2)
+    g2.add_edge(2, 3)
+    g2.add_edge(3, 4)
+    g2.add_edge(4, 0)
+    g2.hamiltonian_path()
     
     # Análise de complexidade
     print("\nIniciando análise de complexidade...")
